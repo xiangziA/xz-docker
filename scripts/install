@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -eux
+
+docker exec -it web_django git pull
+docker exec -it web_django python3 manage.py makemigrations
+docker exec -it web_django python3 manage.py migrate
+docker exec -it web_django python3 manage.py loaddata db.json
